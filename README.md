@@ -11,4 +11,4 @@ Options are included in console_bam.sh which you have to edit to change the sett
 
 Important! Make sure that console_bam.sh and bin/yleaf/Yleaf.py and bin/yleaf/predict_haplogroup.py have executable permissions.
 
-./predict_haplogroup.py filename.bam
+./console_bam.sh filename.bam
