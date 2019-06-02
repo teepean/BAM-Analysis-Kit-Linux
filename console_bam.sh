@@ -319,7 +319,7 @@ for A in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 X Y M ; do
 				java $BAMKIT_JVM -jar bin/gatk/GenomeAnalysisTK.jar -l INFO -R ref.fa -T HaplotypeCaller -I bam_sorted_realigned.bam -nct $BAMKIT_THREADS -o bam_chr$A.vcf
 				bgzip bam_chr$A.vcf
 				tabix bam_chr$A.vcf.gz
-				java -jar bin/haplogrep/haplogrep-2.1.16.jar --in bam_chrM.vcf.gz --format vcf --out out/mtDNA-haplogroup-haplogrep.txt
+				java -jar bin/haplogrep/haplogrep-2.1.20.jar --in bam_chrM.vcf.gz --format vcf --out out/mtDNA-haplogroup-haplogrep.txt
 				bcftools query -f '%CHROM\t%POS\t[%IUPACGT]\n' bam_chr$A.vcf.gz |sed 's/chr//g' |sed 's/\///g' > chr$A.tab	
 				bcftools query -f '%REF\t%POS\t[%IUPACGT]\n' bam_chr$A.vcf.gz |sed 's/chr//g' |sed 's/\///g' |/usr/bin/gawk '{if($3 ~ /^[ATGC]$/) printf $1 $2 $3 " "}' |sed 's/\s$//g' |sed 's/\s/, /g' > out/RSRS_mtDNA.txt
 
